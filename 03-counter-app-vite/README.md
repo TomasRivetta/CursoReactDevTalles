@@ -1,5 +1,7 @@
 # React + Vite
 
+## Comando a ejecutar
+
 - npm install
 - npm add prop-types
 - npm install --save-dev jest
