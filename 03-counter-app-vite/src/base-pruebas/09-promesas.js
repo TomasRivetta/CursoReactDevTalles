@@ -12,5 +12,3 @@ export const getHeroeByIdAsync = (id) => {
     }, 1000);
   });
 };
-
-getHeroeByIdAsync(1).then(console.log).catch(console.warn);
