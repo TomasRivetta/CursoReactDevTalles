@@ -8,3 +8,6 @@
 - npm add -D @types/jest
 - npm install --save-dev babel-jest @babel/core @babel/preset-env
 - npm add -D whatwg-fetch
+- npm install --save-dev @testing-library/react
+- npm add -D jest-environment-jsdom
+- npm add -D @babel/preset-react
