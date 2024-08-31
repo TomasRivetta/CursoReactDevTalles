@@ -428,3 +428,95 @@ export const AddCategory = () => {
 [Docs | GIPHY Developers](https://developers.giphy.com/docs/api/endpoint/#search)
 
 ### **NUNCA COLOCAR LA EJECUCION DE UNA FUNCION DENTRO DE UN FUNCIONAL COMPONENT, PORQUE CADA VEZ QUE SE RENDERIZE EL COMPONENT VA A EJECUTAR 2 VECES LA FUNCION**
+
+### useEffect
+
+[Docs | Strict mode](https://legacy.reactjs.org/docs/strict-mode.html)
+
+react cada vez que detecta un cambio en el componente lo reejecuta, hay ciertas funciones que permiten que esto no les suceda.
+UseEffect sirve para ejecutar efectos secundarios, es decir, un proceso que querrramos ejecutar cuando algo suceda.
+El useEffect no puede ser asincrono porque devuelve una funcion, no puede devolver una promesa
+
+![image.png](<React%20De%20cero%20a%20experto%20(Hooks%20y%20MERN)%203cf0076ec0d445738a3e08b310ab0540/image%2019.png>)
+
+### className - Clases en CSS
+
+en JSX no se usa la palabra class, se usa la palabra ClassName="nombreClase"
+
+### Forma de desestructurar
+
+```jsx
+<div className="card-grid">
+  {images.map((image) => (
+    //OTRA FORMA DE ENVIAR EL OBJETO, todas las propiedades del image las exparso
+    //para que me permita usar las propiedades del image como item
+    <GifGridItem key={image.id} {...image} />
+  ))}
+</div>;
+
+//OTRO COMPONENTE
+export const GifGridItem = ({ title, url, id }) => {
+  return (
+    <div className="card">
+      <img src={url} alt={title} />
+      <p>{title}</p>
+    </div>
+  );
+};
+```
+
+### Custom Hook - useFecthGifs
+
+nos permite no repetir codigo y poder reutilizar
+creamos una carpeta hooks, adentro un archivo JS con el nombre del hook
+un Hooks no es mas que una funcion que retorna algo
+
+```jsx
+import { useState, useEffect } from "react";
+import { getGifs } from "../helpers/getGifs";
+
+export const useFetchGifs = (category) => {
+  const [images, setImages] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const getImages = async () => {
+    const newImages = await getGifs(category);
+    setImages(newImages);
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    getImages();
+  }, []);
+
+  return {
+    images, // images:images
+    isLoading: isLoading,
+  };
+};
+```
+
+### Archivo Barril - Archivo Indice
+
+estos archivos nos permiten no tener tantos imports, creamos un archivo index.js en el directorio donde esten los archivos a importar
+
+```js
+export * from "./AddCategory";
+export * from "./GifGrid";
+export * from "./GifGridItem";
+```
+
+cuando importamos el index no es necesario especificar /index
+ya sabe el from que debe ir al index
+
+```jsx
+import { AddCategory, GifGrid } from "./components";
+```
+
+### TENGO QUE PRESTAR ATENCION AL MOMENTO DE HACER LOS RETURNS IMPLICITOS DEL MAP NO VAN CON {} VAN CON PARENTESIS
+
+## Generar Build de produccion
+
+`npm run build`
+
+nos genera la carpera dist,esa carpeta es la que vamos a subir a produccion
