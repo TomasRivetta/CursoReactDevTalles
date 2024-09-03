@@ -513,6 +513,18 @@ ya sabe el from que debe ir al index
 import { AddCategory, GifGrid } from "./components";
 ```
 
+### Testing se proyecto de GifsApp
+
+Arrancar el testing por los componentes que menos dependencias tienen
+
+simulamos el evento de presionar teclas
+![image.png](<React%20De%20cero%20a%20experto%20(Hooks%20y%20MERN)%203cf0076ec0d445738a3e08b310ab0540/image%2020.png>)
+
+simular submit del formulario
+
+
+
+
 ### TENGO QUE PRESTAR ATENCION AL MOMENTO DE HACER LOS RETURNS IMPLICITOS DEL MAP NO VAN CON {} VAN CON PARENTESIS
 
 ## Generar Build de produccion
@@ -520,3 +532,59 @@ import { AddCategory, GifGrid } from "./components";
 `npm run build`
 
 nos genera la carpera dist,esa carpeta es la que vamos a subir a produccion
+
+# CONFIGURACION PARA TESTING
+
+# Instalación y configuracion de Jest + React Testing Library
+
+## En proyectos de React + Vite
+
+1. Instalaciones:
+
+```
+yarn add --dev jest babel-jest @babel/preset-env @babel/preset-react
+yarn add --dev @testing-library/react @types/jest jest-environment-jsdom
+```
+
+2. Opcional: Si usamos Fetch API en el proyecto:
+
+```
+yarn add --dev whatwg-fetch
+```
+
+3. Actualizar los scripts del **package.json**
+
+```
+"scripts: {
+  ...
+  "test": "jest --watchAll"
+```
+
+4. Crear la configuración de babel **babel.config.js**
+
+```
+module.exports = {
+    presets: [
+        [ '@babel/preset-env', { targets: { esmodules: true } } ],
+        [ '@babel/preset-react', { runtime: 'automatic' } ],
+    ],
+};
+```
+
+5. Opcional, pero eventualmente necesario, crear Jest config y setup:
+
+**jest.config.js**
+
+```
+module.exports = {
+    testEnvironment: 'jest-environment-jsdom',
+    setupFiles: ['./jest.setup.js']
+}
+```
+
+**jest.setup.js**
+
+```
+// En caso de necesitar la implementación del FetchAPI
+import 'whatwg-fetch'; // <-- yarn add whatwg-fetch
+```
