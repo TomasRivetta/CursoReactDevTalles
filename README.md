@@ -520,10 +520,83 @@ Arrancar el testing por los componentes que menos dependencias tienen
 simulamos el evento de presionar teclas
 ![image.png](<React%20De%20cero%20a%20experto%20(Hooks%20y%20MERN)%203cf0076ec0d445738a3e08b310ab0540/image%2020.png>)
 
-simular submit del formulario
+## MOCK
 
+```jsx
+import { render, screen } from "@testing-library/react";
+import { GifGrid } from "../../src/components/GifGrid";
+import { useFetchGifs } from "../../src/hooks/useFetchGifs";
 
+jest.mock("../../src/hooks/useFetchGifs");
 
+describe("Pruebas en <GifGrid/>", () => {
+  const category = "One punch";
+
+  test("Debe de mostrar el loading inicialmente", () => {
+    useFetchGifs.mockReturnValue({
+      images: [],
+      isLoading: true,
+    });
+
+    render(<GifGrid category={category} />);
+    expect(screen.getByText("Cargando..."));
+    expect(screen.getByText(category));
+  });
+
+  test("Debe de mostrar items cuando se cargan las imagenes useFetchGifs", () => {
+    const gifs = [
+      {
+        id: "ABC",
+        title: "Saitama",
+        url: "https://localhost:goku.jpg",
+      },
+    ];
+
+    useFetchGifs.mockReturnValue({
+      images: gifs,
+      isLoading: false,
+    });
+
+    render(<GifGrid category={category} />);
+
+    expect(screen.getAllByRole("img").length).toBe(1);
+    //screen.debug();
+  });
+});
+```
+
+## Testear Hooks
+
+https://react-hooks-testing-library.com/
+
+```jsx
+import { renderHook, waitFor } from "@testing-library/react";
+import { useFetchGifs } from "../../src/hooks/useFetchGifs";
+
+describe("Pruebas en el Hook useFetchGifs", () => {
+  test("Debe de regresar el estado inicial", () => {
+    const { result } = renderHook(() => useFetchGifs("One Punch"));
+
+    const { images, isLoading } = result.current;
+
+    expect(images.length).toBe(0);
+    expect(isLoading).toBeTruthy();
+  });
+
+  test("Debe de retonar un arreglo de imagenes y isLoading en false", async () => {
+    const { result } = renderHook(() => useFetchGifs("One Punch"));
+
+    //Espera la prueba hasta que el resultado sea mayor a 0
+    await waitFor(() =>
+      expect(result.current.images.length).toBeGreaterThan(0)
+    );
+
+    const { images, isLoading } = result.current;
+    expect(images.length).toBeGreaterThan(0);
+    expect(isLoading).toBeFalsy();
+  });
+});
+```
 
 ### TENGO QUE PRESTAR ATENCION AL MOMENTO DE HACER LOS RETURNS IMPLICITOS DEL MAP NO VAN CON {} VAN CON PARENTESIS
 
