@@ -598,6 +598,120 @@ describe("Pruebas en el Hook useFetchGifs", () => {
 });
 ```
 
+## **Seccion 9: Profundizando Hooks - Generales**
+
+yarn create vite - crear a traves de yarn
+yarn - instalar las dependencias
+yarn dev - largar la app
+
+### UseState
+
+importamos useState
+import { useState } from "react";
+y el snippet es useStateSnippet y nos genera
+el useState automaticamente
+const [first, setfirst] = useState(second) - second seria el valor inicial, que puede ser un objeto, un valor primitivo, un array, etc
+
+tambien podemos desestructurar el useState en caso de recibir un objeto
+
+```jsx
+const [{ Counter1, Counter2, Counter3 }, setCounter] = useState({
+  Counter1: 10,
+  Counter2: 20,
+  Counter3: 30,
+});
+```
+
+o podemos
+
+```jsx
+const [state, setCounter] = useState({
+  Counter1: 10,
+  Counter2: 20,
+  Counter3: 30,
+});
+
+const { Counter1, Counter2, Counter3 } = state;
+```
+
+Si queremos modificar solo 1 propiedad y dejar las otras iguales,
+
+```jsx
+import { useState } from "react";
+
+export const CounterApp = () => {
+  const [state, setCounter] = useState({
+    Counter1: 10,
+    Counter2: 20,
+    Counter3: 30,
+  });
+
+  const { Counter1, Counter2, Counter3 } = state;
+
+  return (
+    <>
+      <h1>Counter: {Counter1}</h1>
+      <h1>Counter: {Counter2}</h1>
+      <h1>Counter: {Counter3}</h1>
+
+      <hr />
+
+      <button
+        className="btn btn-primary"
+        onClick={() =>
+          setCounter({
+            ...state,
+            Counter1: Counter1 + 1,
+          })
+        }
+      >
+        +1
+      </button>
+    </>
+  );
+};
+```
+
+#### CustomHooks
+
+Cremos un archivo js aparte y lo importamos
+
+```js
+import { useState } from "react";
+
+export const useCounter = (initialValue = 10) => {
+  const [Counter, setCounter] = useState(initialValue);
+
+  return {
+    Counter,
+  };
+};
+```
+
+```jsx
+import { useCounter } from "../hooks/useCounter";
+
+export const CounterWithCustomHooks = () => {
+  const { Counter } = useCounter();
+
+  return (
+    <>
+      <h1>Counter With Hooks: {Counter}</h1>
+      <hr />
+      <button className="btn btn-primary">+1</button>
+      <button className="btn btn-primary">Reset</button>
+      <button className="btn btn-primary">-1</button>
+    </>
+  );
+};
+```
+
+si llamo una funcion desde el evento onClick y tal funcion recibe algo, al no pasarle nada va a recibir el evento generando que se rompa
+
+### UseEffect
+
+Para disparar efectos secundarios, recibe una funcion(callback) como parametro
+
 ### TENGO QUE PRESTAR ATENCION AL MOMENTO DE HACER LOS RETURNS IMPLICITOS DEL MAP NO VAN CON {} VAN CON PARENTESIS
 
 ## Generar Build de produccion
