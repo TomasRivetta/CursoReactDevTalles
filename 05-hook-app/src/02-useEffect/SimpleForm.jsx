@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Message } from "./Message";
 
 export const SimpleForm = () => {
   const [formState, setFormState] = useState({
@@ -14,9 +15,17 @@ export const SimpleForm = () => {
     setFormState({ ...formState, [name]: value });
   };
 
-  useEffect( () => {
-    
-  });
+  useEffect(() => {
+    // console.log("Hola");
+  }, []);
+
+  useEffect(() => {
+    // console.log("formState Changed");
+  }, [formState]);
+
+  useEffect(() => {
+    // console.log("Email Changed");
+  }, [email]);
 
   return (
     <>
@@ -30,15 +39,17 @@ export const SimpleForm = () => {
         value={username}
         onChange={onInputChange}
       />
-
       <input
         type="email"
         className="form-control mt-2"
-        placeholder="fernando@google.com"
+        placeholder="mail@mail.com"
         name="email"
         value={email}
         onChange={onInputChange}
       />
+
+      {/* Aca verificamos si existe el usuario, si existe muestra el mensaje*/}
+      {username === "Toto2" && <Message />}
     </>
   );
 };

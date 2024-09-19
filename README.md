@@ -4,7 +4,7 @@
 
 ### ¿Que es react?
 
-Es una libreria que nos permite crear aplicaciones, al ser declarativa hace facil seguir patrones de diseño, es eficiente, react trabaja de forma predecible, react rabaja con componentes es decir si viene una aplicacion grande la rompemos en pequeños componentes para que sea mas mantenible
+Es una librería que nos permite crear aplicaciones, al ser declarativa hace fácil seguir patrones de diseño, es eficiente, react trabaja de forma predecible, react rabaja con componentes es decir si viene una aplicacion grande la rompemos en pequeños componentes para que sea mas mantenible
 
 ![image.png](<React%20De%20cero%20a%20experto%20(Hooks%20y%20MERN)%203cf0076ec0d445738a3e08b310ab0540/image.png>)
 
@@ -711,6 +711,33 @@ si llamo una funcion desde el evento onClick y tal funcion recibe algo, al no pa
 ### UseEffect
 
 Para disparar efectos secundarios, recibe una funcion(callback) como parametro
+
+las dependencias son las condiciones por als cuales el useEffect se va a disparar.
+
+En caso de pasarle un arreglo vacio se dispara 1 vez.
+En cambio si le paso algo entre los corchetes cada vez que cambie ese que le pase se va activar el useEffect
+
+```jsx
+useEffect(() => {
+  console.log("Hola");
+}, []);
+
+useEffect(() => {
+  console.log("formState Changed");
+}, [formState]);
+
+useEffect(() => {
+  console.log("Email Changed");
+}, [email]);
+```
+
+### useCallBack
+
+sirve para memorizar funciones y regresa una funcion que peusa ejecutar pero cuando algo cambie
+
+### useReducer
+
+### useContext
 
 ### TENGO QUE PRESTAR ATENCION AL MOMENTO DE HACER LOS RETURNS IMPLICITOS DEL MAP NO VAN CON {} VAN CON PARENTESIS
 
