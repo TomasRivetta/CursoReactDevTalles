@@ -737,6 +737,16 @@ sirve para memorizar funciones y regresa una funcion que peusa ejecutar pero cua
 
 ### useReducer
 
+¿Que es un Reducer?
+
+1. Es una funcion comun y corriente
+2. Debe de ser una funcion pura: Todo lo que la funcion realize debe ser resuelto de manera interna
+3. Debe de retornar un nuevo estado
+4. Usualmente solo recibe dos argumentos
+5. No debe de realizar tareas asincronas
+6. No debe de llamar localStorage o sessionStorage
+
+
 ### useContext
 
 ### TENGO QUE PRESTAR ATENCION AL MOMENTO DE HACER LOS RETURNS IMPLICITOS DEL MAP NO VAN CON {} VAN CON PARENTESIS
