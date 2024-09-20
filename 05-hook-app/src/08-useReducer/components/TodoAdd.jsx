@@ -1,31 +1,43 @@
-export const TodoAdd = () => {
-  const onNewTodo = (event, descripcion) => {
-    event.preventDefault();
-    console.log(descripcion);
-    console.log(descripcion.target.value);
-  };
+import { useForm } from "../../hooks/index";
 
-  const descripcion = document.querySelector("#descripcion");
+export const TodoAdd = ({ onNewTodo }) => {
+  const { description, onInputChange, onResetForm } = useForm({
+    description: "",
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (description.length <= 1) {
+      return;
+    }
+
+    const newTodo = {
+      id: new Date().getTime() + 100,
+      description: description,
+      done: false,
+    };
+
+    onNewTodo(newTodo);
+    onResetForm()
+  };
 
   return (
     <>
       {/*Componente: TodoAdd onNewTodo(todo) */}
       {/* {id:new Date().., description: '',done:false} */}
-      <h4>Agregar Todo</h4>
-      <hr />
-      <form>
+      <form onSubmit={handleSubmit}>
         <input
           id="descripcion"
           type="text"
           placeholder="¿Que hay que hacer?"
           className="form-control"
+          value={description}
+          onChange={onInputChange}
+          name="description"
         />
 
-        <button
-          type="submit"
-          className="btn btn-outline-primary mt-1"
-          onClick={(event, desc) => onNewTodo(event, desc)}
-        >
+        <button type="submit" className="btn btn-outline-primary mt-1">
           Agregar
         </button>
       </form>

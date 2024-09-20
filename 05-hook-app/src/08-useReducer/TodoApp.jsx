@@ -36,7 +36,9 @@ export const TodoApp = () => {
         </div>
 
         <div className="col-5">
-          <TodoAdd />
+          <h4>Agregar Todo</h4>
+          <hr />
+          <TodoAdd onNewTodo={handleNewTodo} />
         </div>
       </div>
     </>

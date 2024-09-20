@@ -1,10 +1,10 @@
-export const TodoItem = ({ id, description, done }) => {
+export const TodoItem = ({ todo }) => {
   return (
     <>
       {/* Crear un componente personaliza TodoItem */}
-      {done ? null : (
-        <li id={id} className="list-group-item d-flex justify-content-between">
-          <span className="align-self-center">{description}</span>
+      {todo.done ? null : (
+        <li className="list-group-item d-flex justify-content-between">
+          <span className="align-self-center">{todo.description}</span>
           <button className="btn btn-primary">Listo</button>
           <button className="btn btn-danger">Borrar</button>
         </li>
