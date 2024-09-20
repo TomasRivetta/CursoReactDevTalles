@@ -10,7 +10,8 @@ const initialState = [
 ];
 
 const init = () => {
-  return JSON.parse(localStorage.getItem("todos") || []);
+  const savedTodos = localStorage.getItem("todos")
+  return savedTodos ? JSON.parse(savedTodos) : []
 };
 
 export const useTodos = () => {
@@ -27,7 +28,7 @@ export const useTodos = () => {
       payLoad: todo,
     };
 
-    //Mediante el dispatch accedo al reducer que recive la accion
+    //Mediante el dispatch accedo al reducer que recibe la accion
     dispatch(action);
   };
 

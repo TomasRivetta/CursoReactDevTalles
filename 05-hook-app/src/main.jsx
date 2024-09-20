@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // import { MultipleCustomHooks } from "./03-examples/MultipleCustomHooks";
 // import { FocusScreen } from "./04-useRef/FocusScreen";
 // import { Layout } from "./05-useLayoutEffect/Layout";
@@ -15,10 +16,19 @@ import "./index.css";
 // import { Padre } from "./07-tarea-memo/Padre";
 // import "./08-useReducer/intro-reducer";
 
-import { TodoApp } from "./08-useReducer/TodoApp";
+// import { TodoApp } from "../src/08-useReducer/TodoApp";
+
+import { MainApp } from "./09-useContext/MainApp";
+
+const router = createBrowserRouter([
+  {
+    path: "*",
+    element: <MainApp />,
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   // <React.StrictMode>
-  <TodoApp />
+  <RouterProvider router={router} />
   // </React.StrictMode>
 );

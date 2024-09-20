@@ -751,6 +751,9 @@ sirve para memorizar funciones y regresa una funcion que peusa ejecutar pero cua
 Tenemos un componente padre y le pasa la info al hijo y ahora el nieto quiere la info y entonces va a ser del padre, al hijo y del hijo al nieto
 el useContext nos ayuda a romper esa referencia
 
+https://v5.reactrouter.com/web/api/NavLink
+https://reactrouter.com/en/main
+
 ### TENGO QUE PRESTAR ATENCION AL MOMENTO DE HACER LOS RETURNS IMPLICITOS DEL MAP NO VAN CON {} VAN CON PARENTESIS
 
 ## Generar Build de produccion
