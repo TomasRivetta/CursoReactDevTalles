@@ -754,6 +754,13 @@ el useContext nos ayuda a romper esa referencia
 https://v5.reactrouter.com/web/api/NavLink
 https://reactrouter.com/en/main
 
+### Pruebas unitarias y de integración - Hooks
+
+https://gist.github.com/Klerith/ca7e57fae3c9ab92ad08baadc6c26177
+
+
+
+
 ### TENGO QUE PRESTAR ATENCION AL MOMENTO DE HACER LOS RETURNS IMPLICITOS DEL MAP NO VAN CON {} VAN CON PARENTESIS
 
 ## Generar Build de produccion
