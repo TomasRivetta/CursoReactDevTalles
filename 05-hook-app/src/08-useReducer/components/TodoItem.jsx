@@ -9,12 +9,14 @@ export const TodoItem = ({ todo, onDeleteTodo, onToggleTodo }) => {
               todo.done ? "text-decoration-line-through" : ""
             }`}
             onClick={() => onToggleTodo(todo.id)}
+            aria-label="span"
           >
             {todo.description}
           </span>
           <button
             className="btn btn-danger"
             onClick={() => onDeleteTodo(todo.id)}
+            aria-label="btnBorrar"
           >
             Borrar
           </button>
