@@ -12,7 +12,7 @@ export const MultipleCustomHooks = () => {
 
   return (
     <>
-      <h1>Informacion de Pokemon</h1>
+      <h1>Información de Pokemon</h1>
       <hr />
 
       {isLoading ? (
