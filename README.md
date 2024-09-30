@@ -758,6 +758,13 @@ https://reactrouter.com/en/main
 
 https://gist.github.com/Klerith/ca7e57fae3c9ab92ad08baadc6c26177
 
+### React Router
+
+https://reactrouter.com/en/main
+
+https://reactrouter.com/en/6.4.4/start/tutorial#setup
+
+Migrar React Router V5 a V6: https://www.youtube.com/watch?v=FR7x0tqwafc
 
 
 
