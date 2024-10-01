@@ -14,7 +14,7 @@ export const HeroesRoutes = () => {
 
           {/*Search, Hero by id*/}
           <Route path="search" element={<SearchPage />} />
-          <Route path="hero" element={<HeroPage />} />
+          <Route path="hero/:id" element={<HeroPage />} />
 
           {/* Esto se realiza en caso de que cuando se busque una ruta que no existe a donde queremos que se mande o bien puede ser la ruta para nuestro home */}
           <Route path="/" element={<Navigate to="/marvel" />} />
